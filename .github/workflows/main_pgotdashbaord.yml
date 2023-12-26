@@ -60,10 +60,16 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: python-app
-
+      
       - name: Unzip artifact for deployment
         run: unzip release.zip
-
+      - name: Install Git LFS for Deployment
+        run: |
+          sudo apt-get update
+          sudo apt-get install git-lfs
+          git lfs install
+      - name: Fetch LFS Objects for Deployment
+        run: git lfs pull
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
