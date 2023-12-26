@@ -69,8 +69,7 @@ jobs:
           sudo apt-get install git-lfs
           git lfs install
       - name: Fetch LFS Objects for Deployment
-        run: |
-          cd ${{ github.workspace }} 
+        run: | 
           git lfs pull
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
