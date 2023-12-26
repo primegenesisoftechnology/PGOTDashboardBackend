@@ -68,8 +68,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install git-lfs
           git lfs install
-      - name: Fetch LFS Objects for Deployment
-        run: /usr/bin/git lfs pull
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
         id: deploy-to-webapp
