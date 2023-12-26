@@ -70,7 +70,7 @@ jobs:
           git lfs install
       - name: Fetch LFS Objects for Deployment
         run: |
-          cd $GITHUB_WORKSPACE 
+          cd ${{ github.workspace }} 
           git lfs pull
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v2
