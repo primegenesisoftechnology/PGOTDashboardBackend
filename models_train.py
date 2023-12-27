@@ -12,9 +12,11 @@ from sklearn.kernel_approximation import Nystroem
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
 import warnings
+import gzip
 from xgboost import XGBRegressor
 from xgboost import XGBRFRegressor
-df = pd.read_csv("BTC_15Minute.csv")
+
+df = pd.read_csv("BTCDATA.csv")
 warnings.filterwarnings("ignore", category=UserWarning)
 # take a look at the dataset
 #df.head()
@@ -34,6 +36,6 @@ reg.fit(x, y)
 # Saving model to disk
 # Pickle serializes objects so they can be saved to a file, and loaded in a program again later on.
 # joblib.dump(reg, 'Model_5m.pkl')
-pickle.dump(reg, open('model_15m.pkl', 'wb'))
+pickle.dump(reg, gzip.open('model_gzip_1m.pkl', 'wb'))
 #model = pickle.load(open('model.pkl','rb'))
 #print(model.predict([[2.6, 8, 10.1]]))

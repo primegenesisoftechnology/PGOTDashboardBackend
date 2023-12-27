@@ -6,16 +6,17 @@ import websocket
 import json
 import pickle
 import numpy as np
+import gzip
 app = Flask(__name__)
 socketio = SocketIO(app, cors_allowed_origins="*")
 kline_data_1m=None
 kline_data_5m=None
 kline_data_15m=None
 kline_data_3m=None
-model_1m = pickle.load(open('model_1m.pkl', 'rb'))
-model_3m = pickle.load(open('model_3m.pkl', 'rb'))
-model_5m = pickle.load(open('model_5m.pkl', 'rb'))
-model_15m = pickle.load(open('model_15m.pkl', 'rb'))
+model_1m = pickle.load(gzip.open('model_gzip_1m.pkl', 'rb'))
+model_3m = pickle.load(gzip.open('model_gzip_3m.pkl', 'rb'))
+model_5m = pickle.load(gzip.open('model_gzip_5m.pkl', 'rb'))
+model_15m = pickle.load(gzip.open('model_gzip_15m.pkl', 'rb'))
 @socketio.on('connect')
 def Live_stream():
     def One_Minute_Function():
